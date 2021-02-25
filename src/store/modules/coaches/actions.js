@@ -12,7 +12,9 @@ export default {
       areas: data.areas,
     };
 
-    const response = await fetch(`${secrets.apiUrl}/coaches/${userId}.json`, {
+    const token = context.rootGetters.token;
+
+    const response = await fetch(`${secrets.apiUrl}/coaches/${userId}.json?auth=${token}`, {
       method: 'PUT',
       body: JSON.stringify(coachData),
     });
